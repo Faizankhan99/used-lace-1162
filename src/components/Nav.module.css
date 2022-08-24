@@ -1,0 +1,175 @@
+/* 
+.active{
+    color: black;
+    font-size: 15px;
+    padding: 1rem;
+
+  display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+ 
+  .default {
+    color: black;
+  
+    padding: 1rem;
+    font-size: 15px;
+    text-decoration: none;
+  } 
+  .active:hover{
+    color: brown;
+    font-size: 18px;
+ 
+
+  } */
+
+  .input{
+    margin-top: 13px;
+  }
+
+  .main{
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    /* height: 100%; */
+
+  }
+
+  .icon{
+    font-size: 30px;
+    display: flex;
+    margin-top: 1.3%;
+    margin-left: 60px;
+    gap: 30px;
+    height: 50px;
+  }
+
+
+
+
+
+  .nav5{
+    /* color: #000; */
+    /* background-color: black; */
+    height: 60px;
+    display: flex;
+}
+.nav5>ul{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-top: 12px;
+}
+.nav5>ul>li{
+    padding: 10px;
+    position: relative;
+    padding-left: 30pxpx;
+    padding-right: 30px;
+}
+.nav5>ul>li>div{
+    position: absolute;
+    top: 40px;
+    margin-left: auto;
+    display: none;
+    background-color: white;
+    border: 4px solid white;
+    padding: 60px 40px 20px 0px;
+    line-height: 30px;
+    box-sizing: border-box;
+    width: 1400px;
+}
+.nav5>ul>li:nth-child(1)>div{
+margin-left: -70px;
+}
+.nav5>ul>li:nth-child(2)>div{
+ margin-left: -140px;
+}
+.nav5>ul>li:nth-child(3)>div{
+ margin-left: -230px;
+}
+.nav5>ul>li:nth-child(4)>div{
+ margin-left: -320px;
+}
+.nav5>ul>li:nth-child(5)>div{
+ margin-left: -420px;
+}
+.nav5>ul>li:nth-child(6)>div{
+ margin-left: -490px;
+}
+.nav5>ul>li:nth-child(7)>div{
+ margin-left: -600px;
+}
+.nav5>ul>li:nth-child(8)>div{
+ margin-left: -760px;
+}
+.nav5>ul>li:nth-child(9)>div{
+ margin-left: -890px;
+}
+.nav5>ul>li:nth-child(10)>div{
+ margin-left: -995px;
+}
+.nav5>ul>li:nth-child(11)>div{
+ margin-left: -1070px;
+}
+.nav5>ul>li:nth-child(12)>div{
+ margin-left: -1240px;
+}
+.nav5>ul>li:nth-child(1)>div>ul:nth-child(3){
+ margin-left: 300px;
+}
+.nav5>ul>li:nth-child(7)>div>ul:nth-child(5){
+margin-left: 100px;
+}
+.nav5>ul>li:nth-child(8)>div>ul:nth-child(5){
+ margin-left: 100px;
+}
+.nav5>ul>li:nth-child(9)>div>ul:nth-child(3){
+ margin-left: 250px;
+}
+.nav5>ul>li:nth-child(10)>div>ul:nth-child(5){
+ margin-left: 150px;
+}
+.nav5>ul>li:nth-child(11)>div>ul:nth-child(3){
+ margin-left: 400px;
+}
+.nav5>ul>li:nth-child(12)>div>ul:nth-child(3){
+ margin-left: 250px;
+}
+.nav5>ul>li>div>ul>li>a{
+ /* color: #000; */
+ /* border: 2px solid red; */
+text-decoration: none;
+}
+.nav5>ul>li>div>ul>li{
+ list-style: none;
+}
+.nav5>ul>li>div>ul>li>a:hover{
+    text-decoration: underline;
+}
+.nav5>ul>li:hover>div{
+    display: flex;
+}
+.nav5>ul>li>a{
+    text-decoration: none;
+    color: #000;
+}
+
+.link{
+  /* border: 1px solid red; */
+  width: 11%;
+}
+
+.last{
+  /* border: 1px solid red; */
+  display: flex;
+  margin: auto;
+  width: 30%;
+  gap: 25px;
+  height: 300px;
+}
+
+.draw {
+  height: 400px;
+  width: 100%;
+  border: 1px solid red;
+}
