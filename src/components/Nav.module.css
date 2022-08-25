@@ -30,7 +30,8 @@
   .main{
     display: flex;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    /* height: 100%; */
+    width: 100%;
+    /* z-index: 100; */
 
   }
 
@@ -152,6 +153,7 @@ text-decoration: none;
 .nav5>ul>li>a{
     text-decoration: none;
     color: #000;
+   
 }
 
 .link{
@@ -173,3 +175,19 @@ text-decoration: none;
   width: 100%;
   border: 1px solid red;
 }
+.container{
+  /* border: 1px solid red; */
+  display: flex;
+  margin-top: 10px;
+  /* position: fixed; */
+
+
+}
+.container>div:nth-child(1){
+  border: 1px solid red;
+  width: 25%;
+}
+/* .container>div:nth-child(2){
+ 
+  
+}  */
