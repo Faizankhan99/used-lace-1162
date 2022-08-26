@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styles from "../components/Nav.module.css";
 import {
@@ -9,11 +9,36 @@ import {
   Box,
   InputLeftElement,
   InputGroup,
+  StatHelpText,
 } from "@chakra-ui/react";
+
 import { Search2Icon } from "@chakra-ui/icons";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsHeart, BsBag } from "react-icons/bs";
+// import { searchapi } from "../components/Api";
+
 export default function All_Links() {
+  const [text, setText] = useState("");
+  // const [submit, setSubmit] = useState();
+
+  // function handlekeydown(e) {
+  //   if (e.key == "Enter") {
+  //     setData(text);
+  // setSubmit(text);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   handleSearch();
+  // }, [submit]);
+
+  // function handleSearch() {
+  //   searchapi({ submit }).then((res) => {
+  //     console.log(res.data);
+  //     setData(res.data);
+  //   });
+  // }
+
   const links = [
     {
       path: "/",
@@ -58,8 +83,7 @@ export default function All_Links() {
   ];
 
   return (
-    <div>
-      {/* <Stack direction={['column']} > */}
+    <div className={styles.main}>
       <div className={styles.main}>
         <Link to="/" className={styles.link}>
           <Image
@@ -700,12 +724,18 @@ export default function All_Links() {
             pointerEvents="none"
             children={<Search2Icon color="gray.300" />}
           />
-          <Input type="tel" placeholder="Phone number" />
+          <Input
+            onKeyDown={(e) => handlekeydown(e)}
+            onChange={(e) => setText(e.target.value)}
+            type="tel"
+            placeholder="Search for products ,brand and more"
+          />
         </InputGroup>
-
         <div className={styles.icon}>
           <h1>
-            <AiOutlineUser />
+            <Link to="/login">
+              <AiOutlineUser />
+              </Link>
           </h1>
           <h1>
             <BsHeart />
@@ -722,84 +752,3 @@ export default function All_Links() {
     </div>
   );
 }
-
-// {links.map((elem) => (
-//   <NavLink
-//     key={elem.id}
-//     // className={({ isActive }) =>
-//     //   !isActive ? styles.active : styles.default
-//     // }
-//     to={elem.path}
-//   >
-//       {elem.title}
-//   </NavLink>
-// ))}
-
-// Topwear
-// T-Shirts
-// Casual Shirts
-// Formal Shirts
-// Sweatshirts
-// Sweaters
-// Jackets
-// Blazers & Coats
-// Suits
-// Rain Jackets
-// Indian & Festive Wear
-// Kurtas & Kurta Sets
-// Sherwanis
-// Nehru Jackets
-// Dhotis
-// Bottomwear
-// Jeans
-// Casual Trousers
-// Formal Trousers
-// Shorts
-// Track Pants & Joggers
-// Innerwear & Sleepwear
-// Briefs & Trunks
-// Boxers
-// Vests
-// Sleepwear & Loungewear
-// Thermals
-// Plus Size
-// Footwear
-// Casual Shoes
-// Sports Shoes
-// Formal Shoes
-// Sneakers
-// Sandals & Floaters
-// Flip Flops
-// Socks
-// Personal Care & Grooming
-// Sunglasses & Frames
-// Watches
-// Sports & Active Wear
-// Sports Shoes
-// Sports Sandals
-// Active T-Shirts
-// Track Pants & Shorts
-// Tracksuits
-// Jackets & Sweatshirts
-// Sports Accessories
-// Swimwear
-// Gadgets
-// Smart Wearables
-// Fitness Gadgets
-// Headphones
-// Speakers
-// Fashion Accessories
-// Wallets
-// Belts
-// Perfumes & Body Mists
-// Trimmers
-// Deodorants
-// Ties, Cufflinks & Pocket Squares
-// Accessory Gift Sets
-// Caps & Hats
-// Mufflers, Scarves & Gloves
-// Phone Cases
-// Rings & Wristwear
-// Helmets
-// Bags & Backpacks
-// Luggages & Trolleys

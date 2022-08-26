@@ -22,16 +22,23 @@ function getData() {
 
 export default function Womens() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const toast = useToast();
-  const arr = [];
+  const arr = JSON.parse(localStorage.getItem("Data")) || [];
+
   useEffect(() => {
-    handledata();
+    setTimeout(() => {
+      handledata();
+    }, 100);
+    setLoading(true);
   }, []);
 
   function handledata() {
+    setLoading(true);
     getData().then((res) => {
       console.log(res);
       setData(res);
+      setLoading(false);
     });
   }
 
@@ -39,8 +46,6 @@ export default function Womens() {
     console.log(elem);
     arr.push(elem);
     localStorage.setItem("Data", JSON.stringify(arr));
-    // alert("YOUR PRODUCT ADDED SUUCESSFULLY ❤️");
-    // <Navigate to="/mens/cart"></Navigate>;
     toast({
       title: "Product succefully added😊 in bag",
       description: "",
@@ -49,6 +54,30 @@ export default function Womens() {
       isClosable: true,
     });
   }
+
+  if (loading) {
+    return (
+      <Stack>
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+      </Stack>
+    );
+  }
+
   return (
     <div className={styles.container}>
       <div>
@@ -135,14 +164,14 @@ export default function Womens() {
             overflow="hidden"
           >
             <Link to={`/womens/singleproduct/${elem.id}`}>
-              <img src={elem.image} alt="" />
+              <img src={elem.Image} alt="" />
               <Text fontSize={["sm", "md", "2xl", "3xl"]} as="b">
                 {elem.Name}
               </Text>
               <Box display="flex" ml="10px" gap="20px">
                 <Text color="tomato">{elem.Price}</Text>
                 <Text as="del" color="#b48484">
-                  Rs. {elem.OlderPrice}
+                  {elem.OlderPrice}
                 </Text>
               </Box>
             </Link>
