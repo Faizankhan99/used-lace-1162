@@ -23,7 +23,7 @@ import {
 export default function Singleproduct() {
   const [data, setData] = useState(Data.products);
   const { id } = useParams();
-  const arr = [];
+  const arr = JSON.parse(localStorage.getItem("Data")) || [];
   console.log(id);
   console.log(data[id]);
 
@@ -74,7 +74,7 @@ export default function Singleproduct() {
           </Text>
           <Box display="flex" alignItems="center" gap="30px">
             <Text fontSize={["sm", "md", "5xl"]} color="tomato">
-              Rs. {data[id].Price}
+              {data[id].Price}
             </Text>
 
             <Text fontSize={["sm", "md", "2xl"]} as="del" color="#b48484">

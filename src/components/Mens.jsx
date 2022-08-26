@@ -19,7 +19,7 @@ import { Link, Navigate, Route } from "react-router-dom";
 import Pagination from "./Pagination";
 function getData({ page }) {
   return fetch(
-    `https://blooming-island-90693.herokuapp.com/products?_page=${page}&_limit=86`
+    `https://blooming-island-90693.herokuapp.com/product?_page=${page}&_limit=86`
   ).then((res) => res.json());
 }
 
@@ -29,7 +29,7 @@ export default function Mens() {
   const [page, setPage] = useState(1);
   const [totalpage, setTotalpage] = useState(0);
   const toast = useToast();
-  const arr = [];
+  const arr = JSON.parse(localStorage.getItem("Data")) || [];
 
   useEffect(() => {
     setTimeout(() => {
@@ -51,7 +51,7 @@ export default function Mens() {
     console.log(elem);
     arr.push(elem);
     localStorage.setItem("Data", JSON.stringify(arr));
-    // alert("YOUR PRODUCT ADDED SUUCESSFULLY ❤️");
+    // alert("YOUR PRODUCT ADDED SUUCESzooSFULLY ❤️");
     // <Navigate to="/mens/cart"></Navigate>;
     toast({
       title: "Product succefully added😊 in bag",
@@ -102,9 +102,7 @@ export default function Mens() {
               </Stack>
             </RadioGroup>
           </ul>
-
           <hr />
-
           <ul>
             <Text as="b" fontSize={["sm", "md", "2xl", "xl"]}>
               BRAND
@@ -176,7 +174,7 @@ export default function Mens() {
                 </Text>
 
                 <Box mb="10px" display="flex" ml="10px" gap="20px">
-                  <Text color="tomato">Rs. {elem.Price}</Text>
+                  <Text color="tomato">{elem.Price}</Text>
                   <Text as="del" color="#b48484">
                     Rs. {elem.OlderPrice}
                   </Text>
