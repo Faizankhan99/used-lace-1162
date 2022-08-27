@@ -11,44 +11,52 @@ import {
   Radio,
   RadioGroup,
   Button,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
 } from "@chakra-ui/react";
 import styles from "../components/Nav.module.css";
 import axios from "axios";
-import { Link, Navigate, Route } from "react-router-dom";
+import { Link, Navigate, Route, useSearchParams } from "react-router-dom";
 
 import Pagination from "./Pagination";
+import Footer from "./Footer";
 function getData({ page }) {
   return fetch(
-    `https://blooming-island-90693.herokuapp.com/product?_page=${page}&_limit=86`
+    `https://blooming-island-90693.herokuapp.com/product?_page=${page}&_limit=12`
   ).then((res) => res.json());
 }
 
 export default function Mens() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
-  const [totalpage, setTotalpage] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initial = Number(searchParams.get("page")) || 1;
+  const [page, setPage] = useState(initial);
+  const totalpage = data.length;
   const toast = useToast();
   const arr = JSON.parse(localStorage.getItem("Data")) || [];
 
   useEffect(() => {
+    setSearchParams({ page });
+  }, [page]);
+
+  useEffect(() => {
     setTimeout(() => {
       handledata();
-    }, 100);
+    }, 10);
     setLoading(true);
   }, [page]);
 
   function handledata() {
     setLoading(true);
     getData({ page }).then((res) => {
-      // console.log(res);
       setData(res);
-      // setTotalpage(res.totalpage);
       setLoading(false);
     });
   }
   function Addcart(elem) {
-    console.log(elem);
+    // console.log(elem);
     arr.push(elem);
     localStorage.setItem("Data", JSON.stringify(arr));
     // alert("YOUR PRODUCT ADDED SUUCESzooSFULLY ❤️");
@@ -85,6 +93,25 @@ export default function Mens() {
   return (
     <>
       {/* <hr /> */}
+      <Box
+        // border="1px "
+        background="white"
+        borderColor="black"
+        position="fixed"
+        w="100%"
+        boxShadow="md"
+        fontSize={["sm", "md", "xl"]}
+      >
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/mens">Mens page</BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
+      </Box>
       <div className={styles.container}>
         <div>
           <ul>
@@ -194,16 +221,24 @@ export default function Mens() {
           ))}
         </SimpleGrid>
       </div>
-      <Button disabled={page == 1} onClick={() => setPage(page - 1)}>
-        Prev
-      </Button>
-      <Button>{page}</Button>
-      <Button onClick={() => setPage(page + 1)}>Next</Button>
-      <Pagination
-        // totalpage={totalpage}
-        currentPage={page}
-        onClick={(value) => setPage(value)}
-      />
+      <Box ml="50%" mt="3%" display="flex">
+        <Button disabled={page == 1} onClick={() => setPage(page - 1)}>
+          Prev
+        </Button>
+
+        {/* <Button>{page}</Button> */}
+        <Pagination
+          totalpage={totalpage}
+          currentPage={page}
+          onClick={(value) => setPage(value)}
+        />
+        <Button
+          disabled={page === data.length}
+          onClick={() => setPage(page + 1)}
+        >
+          Next
+        </Button>
+      </Box>
     </>
   );
 }

@@ -3,8 +3,6 @@ import styles from "../components/Nav.module.css";
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
   Box,
   Button,
@@ -14,34 +12,41 @@ import {
   Text,
   Image,
 } from "@chakra-ui/react";
+import { Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { Authcontext } from "../Context/Auth";
+import axios from "axios";
 
-let login = {
-  email: "",
-  pass: "",
-};
+// let login = {
+//   email: "",
+//   pass: "",
+// };
 
 export default function Login() {
-  const [input, setInput] = useState(login);
-  const [user, setUser] = useState({});
+  const { isAuth, Loginuser } = useContext(Authcontext);
+  const [email, setEamil] = useState();
+  const [pass, setPass] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 
-  function setlogin(e) {
-    const { name: key, value } = e.target;
-    setInput({ ...input, [key]: value });
-  }
+  // function setlogin(e) {
+  //   const { name: key, value } = e.target;
+  //   setInput({ ...input, [key]: value });
+  // }
 
   function handleSubmit(e) {
     setIsLoading(true);
     e.preventDefault();
-    setUser({ ...user, input });
+    Loginuser(email, "token");
     setTimeout(() => {
       setIsLoading(false);
     }, 1500);
   }
 
-  console.log(user);
+  if (isAuth) {
+    return <Navigate to="/mens" />;
+  }
 
   return (
     <div className={styles.login}>
@@ -78,19 +83,18 @@ export default function Login() {
         <FormControl p="30px" m="auto" w="80%">
           <FormLabel>Email</FormLabel>
           <Input
-            required
-            name="email"
             type="email"
-            value={input.email}
-            onChange={setlogin}
+            onChange={(e) => setEamil(e.target.value)}
             placeholder="Enter your Email"
           />
           <FormLabel>Password</FormLabel>
           <InputGroup size="md">
             <Input
-              required
+              name="pass"
+              type="password"
+              onChange={(e) => setPass(e.target.value)}
               pr="4.5rem"
-              type={show ? "text" : "password"}
+              // type={show ? "text" : "password"}
               placeholder="Enter password"
             />
             <InputRightElement width="4.9rem">
