@@ -8,7 +8,6 @@ import Topbrand2 from "../../public/topbrand2.png";
 import { Image3, Images } from "./Images";
 import { Image2 } from "./Images";
 import { Image4 } from "./Images2";
-
 export default function Home() {
   return (
     <div>
@@ -19,8 +18,6 @@ export default function Home() {
       <Image2 />
       <Image3 />
       <Image4 />
-      {/* <DrawerExample/> */}
-      {/* <Button onClick={drawer}>CLIC</Button> */}
     </div>
   );
 }

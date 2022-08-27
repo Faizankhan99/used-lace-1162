@@ -80,9 +80,9 @@ export function Image4() {
   return (
     <div>
       <SimpleGrid mt="20px" columns={[3, 4, 6]}>
-        {imgTop.map((elem) => (
+        {imgTop.map((elem, index) => (
           <div onClick={() => handleClick(elem)}>
-            <img className={styles.img} key={elem.src} src={elem.src} />
+            <img className={styles.img} key={index} src={elem.src} />
           </div>
         ))}
       </SimpleGrid>

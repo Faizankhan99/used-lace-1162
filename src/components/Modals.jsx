@@ -32,7 +32,7 @@ export function ModalComponent({ isOpen, setIsOpen, data }) {
               </BreadcrumbItem>
 
               <BreadcrumbItem>
-                <BreadcrumbLink href="/listing">Listing page</BreadcrumbLink>
+                <BreadcrumbLink href="/mens">Mens page</BreadcrumbLink>
               </BreadcrumbItem>
             </Breadcrumb>
             {data.title}

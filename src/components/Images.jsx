@@ -46,9 +46,9 @@ export function Images() {
   return (
     <div>
       <SimpleGrid mt="10px" columns={[2, 3, 6]} spacing="40px">
-        {imgTop.map((elem) => (
+        {imgTop.map((elem, index) => (
           <div onClick={() => handleClick(elem)}>
-            <img className={styles.img} key={elem.src} src={elem.src} />
+            <img className={styles.img} key={index} src={elem.src} />
           </div>
         ))}
       </SimpleGrid>
@@ -82,9 +82,9 @@ export function Image2() {
   return (
     <div>
       <SimpleGrid mt="20px" columns={[3, 4, 6]} spacing="40px">
-        {imgTop.map((elem) => (
+        {imgTop.map((elem, index) => (
           <div onClick={() => handleClick(elem)}>
-            <img className={styles.img} key={elem.src} src={elem.src} />
+            <img className={styles.img} key={index} src={elem.src} />
           </div>
         ))}
       </SimpleGrid>
@@ -119,9 +119,9 @@ export function Image3() {
   return (
     <div>
       <SimpleGrid mt="20px" columns={[3, 4, 6]} spacing="40px">
-        {imgTop.map((elem) => (
+        {imgTop.map((elem, index) => (
           <div onClick={() => handleClick(elem)}>
-            <img className={styles.img} key={elem.src} src={elem.src} />
+            <img className={styles.img} key={index} src={elem.src} />
           </div>
         ))}
       </SimpleGrid>
