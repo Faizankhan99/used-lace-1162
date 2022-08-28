@@ -45,7 +45,7 @@ export default function Login() {
   }
 
   if (isAuth) {
-    return <Navigate to="/mens" />;
+    return <Navigate to="/cart" />;
   }
 
   return (

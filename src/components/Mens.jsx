@@ -59,8 +59,6 @@ export default function Mens() {
     // console.log(elem);
     arr.push(elem);
     localStorage.setItem("Data", JSON.stringify(arr));
-    // alert("YOUR PRODUCT ADDED SUUCESzooSFULLY ❤️");
-    // <Navigate to="/mens/cart"></Navigate>;
     toast({
       title: "Product succefully added😊 in bag",
       description: "",
