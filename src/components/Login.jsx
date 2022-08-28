@@ -95,7 +95,7 @@ export default function Login() {
           <InputGroup size="md">
             <Input
               name="pass"
-              type="password"
+              type={show ? "text" : "password"}
               onChange={(e) => setPass(e.target.value)}
               pr="4.5rem"
               // type={show ? "text" : "password"}
