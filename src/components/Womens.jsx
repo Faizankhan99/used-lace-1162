@@ -112,10 +112,10 @@ export default function Womens() {
             <RadioGroup defaultValue="2">
               <Stack p={["2", "3", "5"]} spacing={2} direction="column">
                 <Radio colorScheme="red" value="1" size={["sm", "md", "lg"]}>
-                  Tshirts(78255)
+                  Kurtas(3445)
                 </Radio>
                 <Radio colorScheme="red" value="1" size={["sm", "md", "lg"]}>
-                  Lounge Tshirts(801)
+                  Kurta Sets(8)
                 </Radio>
               </Stack>
             </RadioGroup>
@@ -130,25 +130,25 @@ export default function Womens() {
             <RadioGroup defaultValue="2">
               <Stack p={["2", "3", "5"]} spacing={2} direction="column">
                 <Radio colorScheme="red" value="1" size={["sm", "md", "lg"]}>
-                  Roadster(3119)
+                  KALINI(320)
                 </Radio>
                 <Radio colorScheme="green" value="2" size={["sm", "md", "lg"]}>
-                  TKalt(1749)
+                  Karigari(303)
                 </Radio>
                 <Radio colorScheme="green" value="3" size={["sm", "md", "lg"]}>
-                  WROGN(1559)
+                  Anouk(237)
                 </Radio>
                 <Radio colorScheme="green" value="4" size={["sm", "md", "lg"]}>
-                  Puma(1492)
+                  HERE&NOW(113)
                 </Radio>
                 <Radio colorScheme="green" value="5" size={["sm", "md", "lg"]}>
-                  Friskers(1480)
+                  Sangria(111)
                 </Radio>
                 <Radio colorScheme="green" value="6" size={["sm", "md", "lg"]}>
-                  HRX by Hrithik Roshan(1373)
+                  DIVYANK(2)
                 </Radio>
                 <Radio colorScheme="green" value="7" size={["sm", "md", "lg"]}>
-                  Huetrap(1267)
+                  7Threads(159)
                 </Radio>
               </Stack>
             </RadioGroup>

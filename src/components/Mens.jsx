@@ -96,7 +96,7 @@ export default function Mens() {
         background="white"
         borderColor="black"
         position="fixed"
-        w="100%"
+        // w="100%"
         boxShadow="md"
         fontSize={["sm", "md", "xl"]}
       >

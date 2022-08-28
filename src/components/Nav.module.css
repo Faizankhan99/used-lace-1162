@@ -191,10 +191,12 @@ text-decoration: none;
 
 
 
+
 }
 .container>div:nth-child(1){
   /* border: 1px solid red; */
   width: 25%;
+  margin-top: 5%;
   /* position: fixed;
   top: 110px; */
   /* background-color: white; */
