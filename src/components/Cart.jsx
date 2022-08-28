@@ -25,6 +25,7 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 function local() {
   return JSON.parse(localStorage.getItem("Data")) || [];
@@ -64,6 +65,7 @@ export default function Cart() {
         let per = (total * 30) / 100;
         dis = total - per;
         // console.log(dis);
+        localStorage.setItem("price", JSON.stringify(dis));
         setDis(dis);
       }
     });
@@ -301,6 +303,11 @@ export default function Cart() {
             </Box>
             <hr color="black" />
           </Box>
+          <Link to="/payment">
+            <Button bg="red" color="white" w="60%" ml="60px">
+              CHECK OUT
+            </Button>
+          </Link>
         </div>
       </div>
     </>
