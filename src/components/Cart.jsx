@@ -25,6 +25,7 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 function local() {
   return JSON.parse(localStorage.getItem("Data")) || [];
@@ -51,11 +52,6 @@ export default function Cart() {
     totalprice();
   }, [local()]);
 
-  // useEffect(() => {
-  //   totalprice();
-  // }, [Dis]);
-
-  // totalprice();
   function totalprice() {
     let sum = 0;
     let dis = 0;
@@ -66,9 +62,10 @@ export default function Cart() {
       total = sum;
       setTotal(total);
       if (click == "Masai") {
-        let per = (total * 20) / 100;
+        let per = (total * 30) / 100;
         dis = total - per;
         // console.log(dis);
+        localStorage.setItem("price", JSON.stringify(dis));
         setDis(dis);
       }
     });
@@ -129,11 +126,11 @@ export default function Cart() {
             border="2px"
             mt="40px"
             h="65%"
-            borderColor="black"
+            borderColor="#ccc"
             overflow="scroll"
             // mb="-12%"
           >
-            <Box mb="-10%" h="40%" w="100%">
+            <Box mb="-25%" h="40%" w="100%">
               {arr.length === 0 ? (
                 <Image
                   boxSize="200%"
@@ -187,7 +184,7 @@ export default function Cart() {
         </div>
 
         <div className={styles.sec}>
-          <Box border="1px" borderColor="black">
+          <Box border="1px" borderColor="#ccc">
             <Text fontSize={["sm", "md", "xl", "2xl"]}>
               DONATE FOR COVID-19
             </Text>
@@ -250,18 +247,18 @@ export default function Cart() {
             {/* /////////////////////////////////////////////////////////////// */}
 
             <Text ml="40px" mt="10px" mb="10px" fontSize={["sm", "md", "md"]}>
-              To get upto rs.300 OFF on first order
+              To get upto rs.30% OFF on first order
             </Text>
           </Box>
           {/* Price detail  */}
-          <Box h="50%" mt="30px" p="20px" border="1px" borderColor="black">
+          <Box h="50%" mt="30px" p="20px" border="1px" borderColor="#ccc">
             <Box
               display="flex"
               justifyContent="space-between"
               fontSize={["sm", "md", "2xl"]}
               mt="20px"
             >
-              <Text>Total MRP</Text> <Text>20000</Text>
+              <Text>Total MRP</Text> <Text>{Dis === 0 ? Total : Dis}</Text>
             </Box>
 
             <Box
@@ -270,7 +267,7 @@ export default function Cart() {
               justifyContent="space-between"
               fontSize={["sm", "md", "2xl"]}
             >
-              <Text>Discount on MRP</Text> <Text>0</Text>
+              <Text>Discount on MRP</Text> <Text>{Dis}</Text>
             </Box>
 
             <Box
@@ -279,7 +276,7 @@ export default function Cart() {
               justifyContent="space-between"
               fontSize={["sm", "md", "2xl"]}
             >
-              <Text>Coupan Discount</Text> <Text>{Dis}</Text>
+              <Text>Coupan Discount</Text> <Text>30%</Text>
             </Box>
 
             <Box
@@ -290,9 +287,10 @@ export default function Cart() {
             >
               <Text>Convenince Fee</Text> <Text>FREE</Text>
             </Box>
+            {/* <hr color="black" /> */}
             <Box
-              border="1px"
-              borderColor="black"
+              // border="1px"
+              // borderColor="black"
               mt="20px"
               display="flex"
               justifyContent="space-between"
@@ -303,7 +301,13 @@ export default function Cart() {
               </Text>{" "}
               <Text> RS.{Dis === 0 ? Total : Dis}</Text>
             </Box>
+            <hr color="black" />
           </Box>
+          <Link to="/payment">
+            <Button bg="red" color="white" w="60%" ml="60px">
+              CHECK OUT
+            </Button>
+          </Link>
         </div>
       </div>
     </>

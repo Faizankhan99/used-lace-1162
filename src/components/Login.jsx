@@ -38,14 +38,18 @@ export default function Login() {
   function handleSubmit(e) {
     setIsLoading(true);
     e.preventDefault();
-    Loginuser(email, "token");
+    if (email == "eve.holt@reqres.in" && pass == "cityslicka") {
+      Loginuser(email, "token");
+    } else {
+      alert("Please enter your email address");
+    }
     setTimeout(() => {
       setIsLoading(false);
     }, 1500);
   }
 
   if (isAuth) {
-    return <Navigate to="/mens" />;
+    return <Navigate to="/cart" />;
   }
 
   return (
