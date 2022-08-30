@@ -65,10 +65,10 @@ export default function Cart() {
         let per = (total * 30) / 100;
         dis = total - per;
         // console.log(dis);
-        localStorage.setItem("price", JSON.stringify(dis));
         setDis(dis);
       }
     });
+    localStorage.setItem("price", JSON.stringify(dis == 0 ? total : dis));
   }
 
   // console.log(Dis);

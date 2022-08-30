@@ -35,7 +35,7 @@ export default function Womens() {
   useEffect(() => {
     setTimeout(() => {
       handledata();
-    }, 100);
+    }, 0);
     setLoading(true);
   }, [page]);
 

@@ -24,8 +24,8 @@ import axios from "axios";
 
 export default function Login() {
   const { isAuth, Loginuser } = useContext(Authcontext);
-  const [email, setEamil] = useState();
-  const [pass, setPass] = useState();
+  const [email, setEamil] = useState("");
+  const [pass, setPass] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
@@ -34,10 +34,23 @@ export default function Login() {
   //   const { name: key, value } = e.target;
   //   setInput({ ...input, [key]: value });
   // }
+  // const userLoginData = {
+  //   email,
+  //   pass,
+  // }
+  // axios
+  //   .post("https://reqres.in/api/login",userLoginData)
+  //   .then((res) => {
+  //     console.log(res.data);
+  //     Loginuser(email, res.data.token);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
 
   function handleSubmit(e) {
-    setIsLoading(true);
     e.preventDefault();
+    setIsLoading(true);
     if (email == "eve.holt@reqres.in" && pass == "cityslicka") {
       Loginuser(email, "token");
     } else {

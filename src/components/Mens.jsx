@@ -44,7 +44,7 @@ export default function Mens() {
   useEffect(() => {
     setTimeout(() => {
       handledata();
-    }, 10);
+    }, 0);
     setLoading(true);
   }, [page]);
 
