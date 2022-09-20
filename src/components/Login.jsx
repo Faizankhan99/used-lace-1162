@@ -38,11 +38,27 @@ export default function Login() {
   function handleSubmit(e) {
     setIsLoading(true);
     e.preventDefault();
-    if (email == "eve.holt@reqres.in" && pass == "cityslicka") {
-      Loginuser(email, "token");
-    } else {
-      alert("Please enter your email address");
-    }
+    // if (email == "eve.holt@reqres.in" && pass == "cityslicka") {
+    //   Loginuser(email, "token");
+    // } else {
+    //   alert("Please enter your email address");
+    // }
+
+    let data = {
+      email: email,
+      password: pass,
+    };
+
+    axios
+      .post("https://reqres.in/api/login", data)
+      .then((res) => {
+        console.log(res.data);
+        Loginuser(email, "token");
+      })
+      .catch((err) => {
+        alert("Please enter your email address");
+      });
+
     setTimeout(() => {
       setIsLoading(false);
     }, 1500);
@@ -98,7 +114,7 @@ export default function Login() {
               type="password"
               onChange={(e) => setPass(e.target.value)}
               pr="4.5rem"
-              // type={show ? "text" : "password"}
+              type={show ? "text" : "password"}
               placeholder="Enter password"
             />
             <InputRightElement width="4.9rem">

@@ -189,11 +189,16 @@ export default function Womens() {
             >
               <Link to={`/womens/singleproduct/${elem.id}`}>
                 <img src={elem.Image} alt="" />
-                <Text fontSize={["sm", "md", "2xl", "3xl"]} as="b">
+                <Text
+                  fontSize={["sm", "md", "md", "md"]}
+                  as="b"
+                  // // alignItems="center"
+                  // className={styles.center}
+                >
                   {elem.Name}
                 </Text>
                 <Box display="flex" ml="10px" gap="20px">
-                  <Text color="tomato">{elem.Price}</Text>
+                  <Text color="tomato">Rs.{elem.Price}</Text>
                   <Text as="del" color="#b48484">
                     {elem.OlderPrice}
                   </Text>
