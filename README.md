@@ -1,7 +1,11 @@
 # used-lace-1162
-Myntra clone
 
+<h1>Myntra clone</h1>
+<h3>This website is a clone of "Myntra.com". It is a online Shopping Site for Fashion & Lifestyle in India. India's Fashion Expert brings you a variety of footwear, Clothing, Accessories and lifestyle products ....<h3/>
 
+<h2>
+Individual Project | Duration: 04 Days
+<h2/>
 <h1>Some of the glimpses of our work</h1>
 <h1>TECH STACK: REACT | CSS | JAVASCRIPT | JSON SERVER | CHAKRA UI</h1>
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png">
