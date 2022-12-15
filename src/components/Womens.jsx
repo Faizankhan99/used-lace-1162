@@ -18,9 +18,9 @@ import {
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
-function getData({ page }) {
+function getData({ page, sort }) {
   return fetch(
-    `https://blooming-island-90693.herokuapp.com/womens?_page=${page}&_limit=12`
+    `https://json-8pz0.onrender.com/womens?_page=${page}&_limit=12&_sort=Price&_order=${sort}`
   ).then((res) => res.json());
 }
 
@@ -28,6 +28,8 @@ export default function Womens() {
   const [page, setPage] = useState(1);
   // const [totalpage, setTotalpage] = useState(0);
   const [data, setData] = useState([]);
+  const [sort, setSort] = useState("asc");
+
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const arr = JSON.parse(localStorage.getItem("Data")) || [];
@@ -37,15 +39,27 @@ export default function Womens() {
       handledata();
     }, 100);
     setLoading(true);
-  }, [page]);
+  }, [page, sort]);
 
   function handledata() {
     setLoading(true);
-    getData({ page }).then((res) => {
+    getData({ page, sort }).then((res) => {
       console.log(res);
       setData(res);
       setLoading(false);
     });
+  }
+
+  function handlesortA() {
+    let acs = data.sort((a, b) => a.actual_price - b.actual_price);
+    setData(acs);
+    setSort("desc");
+  }
+
+  function handlesortB() {
+    let acs = data.sort((a, b) => b.actual_price - a.actual_price);
+    setData(acs);
+    setSort("asc");
   }
 
   function Addcart(elem) {
@@ -87,12 +101,16 @@ export default function Womens() {
   return (
     <>
       <Box
-        ml={["1%", "2%", "3%"]}
-        fontSize="20px"
+        background="white"
         borderColor="black"
-        position="fixed"
+        // position="fixed"
+        zIndex="700"
+        w="100%"
+        mt="4.7%"
+        boxShadow="md"
+        fontSize={["sm", "md", "xl"]}
       >
-        <Breadcrumb>
+        {/* <Breadcrumb>
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Home</BreadcrumbLink>
           </BreadcrumbItem>
@@ -100,7 +118,18 @@ export default function Womens() {
           <BreadcrumbItem>
             <BreadcrumbLink href="/womens">Mens page</BreadcrumbLink>
           </BreadcrumbItem>
-        </Breadcrumb>
+        </Breadcrumb> */}
+        <Box className={styles.so1}>
+          <h1 className={styles.soh1}>Sort By:</h1>
+          <Button className={styles.sortbtn} onClick={handlesortA}>
+            High to Low
+          </Button>
+          <Button className={styles.sortbtn} onClick={handlesortB}>
+            Low to High
+          </Button>
+          {/* <Button className={styles.sortbtn}>Discount</Button> */}
+        </Box>
+        {/* sorting..................... */}
       </Box>
 
       <div className={styles.container}>

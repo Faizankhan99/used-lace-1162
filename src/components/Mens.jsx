@@ -21,9 +21,9 @@ import { Link, Navigate, Route, useSearchParams } from "react-router-dom";
 
 import Pagination from "./Pagination";
 import Footer from "./Footer";
-function getData({ page }) {
+function getData({ page, sort }) {
   return fetch(
-    `https://blooming-island-90693.herokuapp.com/product?_page=${page}&_limit=12`
+    `https://json-8pz0.onrender.com/product?_page=${page}&_limit=12&_sort=Price&_order=${sort}`
   ).then((res) => res.json());
 }
 
@@ -32,6 +32,8 @@ export default function Mens() {
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const initial = Number(searchParams.get("page")) || 1;
+  const [sort, setSort] = useState("asc");
+
   const [page, setPage] = useState(initial);
   const totalpage = data.length;
   const toast = useToast();
@@ -46,11 +48,23 @@ export default function Mens() {
       handledata();
     }, 10);
     setLoading(true);
-  }, [page]);
+  }, [page, sort]);
+
+  function handlesortA() {
+    let acs = data.sort((a, b) => a.actual_price - b.actual_price);
+    setData(acs);
+    setSort("desc");
+  }
+
+  function handlesortB() {
+    let acs = data.sort((a, b) => b.actual_price - a.actual_price);
+    setData(acs);
+    setSort("asc");
+  }
 
   function handledata() {
     setLoading(true);
-    getData({ page }).then((res) => {
+    getData({ page, sort }).then((res) => {
       setData(res);
       setLoading(false);
     });
@@ -68,7 +82,7 @@ export default function Mens() {
     });
   }
 
-  console.log(totalpage);
+  // console.log(totalpage);
   if (loading) {
     return (
       <Stack>
@@ -92,15 +106,17 @@ export default function Mens() {
     <>
       {/* <hr /> */}
       <Box
-        // border="1px "
+        // border="1px solid black"
         background="white"
         borderColor="black"
-        position="fixed"
-        // w="100%"
+        // position="fixed"
+        zIndex="700"
+        w="100%"
+        mt="4.7%"
         boxShadow="md"
         fontSize={["sm", "md", "xl"]}
       >
-        <Breadcrumb>
+        {/* <Breadcrumb>
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Home</BreadcrumbLink>
           </BreadcrumbItem>
@@ -108,8 +124,21 @@ export default function Mens() {
           <BreadcrumbItem>
             <BreadcrumbLink href="/mens">Mens page</BreadcrumbLink>
           </BreadcrumbItem>
-        </Breadcrumb>
+        </Breadcrumb> */}
+        {/* sorting..................... */}
+        <Box className={styles.so1}>
+          <h1 className={styles.soh1}>Sort By:</h1>
+          <Button className={styles.sortbtn} onClick={handlesortA}>
+            High to Low
+          </Button>
+          <Button className={styles.sortbtn} onClick={handlesortB}>
+            Low to High
+          </Button>
+          {/* <Button className={styles.sortbtn}>Discount</Button> */}
+        </Box>
+        {/* sorting..................... */}
       </Box>
+
       <div className={styles.container}>
         <div>
           <ul>

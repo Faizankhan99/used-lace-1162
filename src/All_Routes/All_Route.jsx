@@ -8,6 +8,7 @@ import Mens from "../components/Mens";
 import { Payment } from "../components/Payment";
 import PrivateRoute from "../components/Private";
 import Searchdata from "../components/Searchdata";
+import Signup from "../components/SIgnup";
 import SIgnup from "../components/SIgnup";
 import Singleproduct from "../components/Singleproduct";
 import Successfull from "../components/Successfull";
@@ -19,7 +20,7 @@ export default function All_Routes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SIgnup />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/mens" element={<Mens />} />
         <Route path="/mens/singleproduct/:id" element={<Singleproduct />} />
         <Route path="/womens/singleproduct/:id" element={<Singleproduct />} />

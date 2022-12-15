@@ -158,6 +158,6 @@ export default function Singleproduct() {
 
 // function getData(id) {
 //   return fetch(
-//     `https://blooming-island-90693.herokuapp.com/products/${id}`
+//     `https://json-8pz0.onrender.com/products/${id}`
 //   ).then((res) => res.json());
 // }
