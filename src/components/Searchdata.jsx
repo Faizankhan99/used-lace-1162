@@ -54,12 +54,14 @@ export default function Searchdata({ children }) {
           >
             <Link to={`/mens/singleproduct/${elem.id}`}>
               <img src={elem.Image} alt="" />
-              <Text ml="10px" fontSize={["sm", "md", "2xl", "3xl"]} as="b">
+              <Text ml="15px" fontSize={["sm", "md", "xl", "xl"]} as="b">
                 {elem.Name}
               </Text>
 
               <Box mb="10px" display="flex" ml="10px" gap="20px">
-                <Text color="tomato">{elem.Price}</Text>
+                <Text color="tomato" ml="10px">
+                  {elem.Price}
+                </Text>
                 <Text as="del" color="#b48484">
                   Rs. {elem.OlderPrice}
                 </Text>
@@ -69,7 +71,7 @@ export default function Searchdata({ children }) {
               onClick={() => {
                 Addcart(elem);
               }}
-              ml="20px"
+              ml="30px"
               colorScheme="teal"
               variant="solid"
             >

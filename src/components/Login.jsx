@@ -17,36 +17,34 @@ import { useContext } from "react";
 import { Authcontext } from "../Context/Auth";
 import axios from "axios";
 
-// let login = {
-//   email: "",
-//   pass: "",
-// };
+let login = {
+  email: "eve.holt@reqres.in",
+  pass: "cityslicka",
+};
 
 export default function Login() {
   const { isAuth, Loginuser } = useContext(Authcontext);
-  const [email, setEamil] = useState();
-  const [pass, setPass] = useState();
+  const [cred, serCred] = useState(login);
+  const [email, setEamil] = useState("");
+  const [pass, setPass] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+  // console.log(email, pass);
 
-  // function setlogin(e) {
-  //   const { name: key, value } = e.target;
-  //   setInput({ ...input, [key]: value });
-  // }
+  function handlechange(e) {
+    const { name, value } = e.target;
+    serCred({ ...cred, [name]: value });
+  }
+
+  console.log(cred);
 
   function handleSubmit(e) {
     setIsLoading(true);
     e.preventDefault();
-    // if (email == "eve.holt@reqres.in" && pass == "cityslicka") {
-    //   Loginuser(email, "token");
-    // } else {
-    //   alert("Please enter your email address");
-    // }
-
     let data = {
-      email: email,
-      password: pass,
+      email: cred.email,
+      password: cred.pass,
     };
 
     axios
@@ -93,26 +91,28 @@ export default function Login() {
         h="400px"
       >
         <Text
-          fontSize={["sm", "md", "3xl"]}
+          fontSize={["sm", "md", "2xl"]}
           color="black"
-          ml={["12%", "12%", "12%"]}
+          ml={["12%", "12%", "10%"]}
           as="b"
         >
           Login Or Signup
         </Text>
-        <FormControl p="30px" m="auto" w="80%">
+        <FormControl p="20px" m="auto" w="90%">
           <FormLabel>Email</FormLabel>
           <Input
+            name="email"
             type="email"
-            onChange={(e) => setEamil(e.target.value)}
+            value={cred.email}
+            onChange={handlechange}
             placeholder="Enter your Email"
           />
           <FormLabel>Password</FormLabel>
           <InputGroup size="md">
             <Input
+              value={cred.pass}
               name="pass"
-              type="password"
-              onChange={(e) => setPass(e.target.value)}
+              onChange={handlechange}
               pr="4.5rem"
               type={show ? "text" : "password"}
               placeholder="Enter password"
